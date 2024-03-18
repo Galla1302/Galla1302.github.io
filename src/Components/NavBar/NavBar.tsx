@@ -1,108 +1,73 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React from 'react';
 
-export const Navbar: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+import { AppBar, Box, Link, Switch, Toolbar, styled } from '@mui/material';
+import { useThemeContext } from '../../contexts/CustomThemeContext';
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+interface NavBarProps {
+  links: { id: number; label: string; path: string }[];
+}
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+const LogoTitle = styled('h5')(
+  ({ theme }) => `
+    color: ${theme.palette.text.primary};
+    display: inline-block;
+`,
+);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+const StyledUl = styled('ul')(
+  () => `
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-right: 64px;
+`,
+);
+
+const StyledLi = styled('li')(
+  () => `
+    float: left;
+`,
+);
+
+export const NavBar = (props: NavBarProps) => {
+  const { links } = props;
+
+  const { toggleTheme, mode } = useThemeContext();
 
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
-          Prasanth Galla
-        </Typography>
-        {isMobile ? (
-          <>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={handleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose} component={RouterLink} to="/">
-                Home
-              </MenuItem>
-              <MenuItem
-                onClick={handleClose}
-                component={RouterLink}
-                to="/projects"
-              >
-                Projects
-              </MenuItem>
-              <MenuItem
-                onClick={handleClose}
-                component={RouterLink}
-                to="/about"
-              >
-                About
-              </MenuItem>
-              <MenuItem
-                onClick={handleClose}
-                component={RouterLink}
-                to="/contact"
-              >
-                Contact
-              </MenuItem>
-            </Menu>
-          </>
-        ) : (
-          <div>
-            <Button color="inherit" component={RouterLink} to="/">
-              Home
-            </Button>
-            <Button color="inherit" component={RouterLink} to="/projects">
-              Projects
-            </Button>
-            <Button color="inherit" component={RouterLink} to="/about">
-              About
-            </Button>
-            <Button color="inherit" component={RouterLink} to="/contact">
-              Contact
-            </Button>
-          </div>
-        )}
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Box sx={{ marginLeft: 8 }}>
+          <LogoTitle>Prasanth Galla</LogoTitle>
+          <Switch
+            checked={mode === 'dark'}
+            onChange={toggleTheme}
+            color="default"
+          />
+        </Box>
+        <Box>
+          <nav>
+            <StyledUl>
+              {links.map((el) => (
+                <StyledLi key={`navigation-link-${el.id}`}>
+                  <Link
+                    sx={{
+                      color: 'text.primary',
+                      display: 'block',
+                      padding: 1,
+                      textDecoration: 'none',
+                      margin: '0 8px',
+                    }}
+                    href={el.path}
+                  >
+                    {el.label}
+                  </Link>
+                </StyledLi>
+              ))}
+            </StyledUl>
+          </nav>
+        </Box>
       </Toolbar>
     </AppBar>
   );
