@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { AppBar, Box, Button, Switch, Toolbar, styled } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useThemeContext } from '../../contexts/CustomThemeContext';
 
 interface NavBarProps {
@@ -40,15 +42,19 @@ export const NavBar = (props: NavBarProps) => {
   const { toggleTheme, mode } = useThemeContext();
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: mode === 'dark' ? '#343a40' : '#f8f9fa' }}
+    >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Box sx={{ marginLeft: 8 }}>
+        <Box sx={{ marginLeft: 8, display: 'flex', alignItems: 'center' }}>
           <LogoTitle>Prasanth Galla</LogoTitle>
           <Switch
             checked={mode === 'dark'}
             onChange={toggleTheme}
             color="default"
           />
+          {mode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
         </Box>
         <Box>
           <nav>
@@ -61,6 +67,7 @@ export const NavBar = (props: NavBarProps) => {
                       display: 'block',
                       padding: 1,
                       textDecoration: 'none',
+                      textTransform: 'none',
                       margin: '0 8px',
                     }}
                     onClick={el.onClick}

@@ -2,9 +2,11 @@ import React, { Ref } from 'react';
 import { Avatar, Box, Button, Typography } from '@mui/material';
 
 import ProfileImage from '../../assets/profile_photo.png';
-import IntroBgImage from '../../assets/intro_bg.jpg';
+import LightBgImage from '../../assets/white_bg.jpg';
+import DarkBgImage from '../../assets/dark_bg.jpg';
 import { GitHub, TextSnippet } from '@mui/icons-material';
 import styled from '@emotion/styled';
+import { useThemeContext } from '../../contexts/CustomThemeContext';
 
 interface IntroSectionProps {
   introRef: Ref<HTMLElement>;
@@ -25,6 +27,7 @@ const StyledButton = styled(Button)(
 );
 
 export const IntroSection = ({ introRef }: IntroSectionProps) => {
+  const { mode } = useThemeContext();
   const onDownload = () => {
     const link = document.createElement('a');
     link.download = `Resume.pdf`;
@@ -42,8 +45,9 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
         justifyContent: 'center',
         gap: '16px',
         alignItems: 'center',
-        backgroundImage: `url(${IntroBgImage})`,
+        backgroundImage: `url(${mode === 'dark' ? DarkBgImage : LightBgImage})`,
         flexDirection: 'row-reverse',
+        transition: 'background-image 0.5s ease-in-out',
       }}
     >
       <Box
