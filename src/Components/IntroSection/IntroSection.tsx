@@ -25,6 +25,13 @@ const StyledButton = styled(Button)(
 );
 
 export const IntroSection = ({ introRef }: IntroSectionProps) => {
+  const onDownload = () => {
+    const link = document.createElement('a');
+    link.download = `Resume.pdf`;
+    link.href = `${process.env.PUBLIC_URL}/FrontEndNew.pdf`;
+    link.click();
+  };
+
   return (
     <Box
       ref={introRef}
@@ -85,6 +92,9 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
             variant="contained"
             color="primary"
             startIcon={<GitHub />}
+            onClick={() =>
+              window.open('https://github.com/Galla1302', '_blank')
+            }
           >
             GitHub
           </StyledButton>
@@ -92,6 +102,7 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
             variant="contained"
             color="primary"
             startIcon={<TextSnippet />}
+            onClick={onDownload}
           >
             Resume
           </StyledButton>
