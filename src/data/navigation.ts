@@ -1,18 +1,15 @@
 const navigationData = [
   {
     id: 1,
-    label: 'Home',
-    path: '/',
+    label: 'About',
   },
   {
     id: 2,
-    label: 'Work Experience',
-    path: '/work-experience',
+    label: 'Skills',
   },
   {
     id: 3,
-    label: 'Education',
-    path: '/education',
+    label: 'Work Experience',
   },
 ];
 

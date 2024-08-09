@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { IntroSection, NavBar, WorkExperience } from './components';
 import { CustomThemeProvider } from './contexts/CustomThemeContext';
 
-import navigationData from './data/navigation';
-
 import './App.css';
+import { CssBaseline } from '@mui/material';
+import { HomePage } from './pages/HomePage/HomePage';
 
 const App: React.FC = () => {
   return (
     <CustomThemeProvider>
+      <CssBaseline />
       <div className="App">
-        <NavBar links={navigationData} />
-        <IntroSection />
-        <WorkExperience />
+        <HomePage />
       </div>
     </CustomThemeProvider>
   );

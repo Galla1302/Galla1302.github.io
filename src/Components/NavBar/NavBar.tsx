@@ -1,10 +1,14 @@
 import React from 'react';
 
-import { AppBar, Box, Link, Switch, Toolbar, styled } from '@mui/material';
+import { AppBar, Box, Button, Switch, Toolbar, styled } from '@mui/material';
 import { useThemeContext } from '../../contexts/CustomThemeContext';
 
 interface NavBarProps {
-  links: { id: number; label: string; path: string }[];
+  links: {
+    id: number;
+    label: string;
+    onClick: () => void;
+  }[];
 }
 
 const LogoTitle = styled('h5')(
@@ -51,7 +55,7 @@ export const NavBar = (props: NavBarProps) => {
             <StyledUl>
               {links.map((el) => (
                 <StyledLi key={`navigation-link-${el.id}`}>
-                  <Link
+                  <Button
                     sx={{
                       color: 'text.primary',
                       display: 'block',
@@ -59,10 +63,10 @@ export const NavBar = (props: NavBarProps) => {
                       textDecoration: 'none',
                       margin: '0 8px',
                     }}
-                    href={el.path}
+                    onClick={el.onClick}
                   >
                     {el.label}
-                  </Link>
+                  </Button>
                 </StyledLi>
               ))}
             </StyledUl>
