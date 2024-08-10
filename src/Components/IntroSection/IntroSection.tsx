@@ -47,8 +47,8 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
     >
       <Box
         sx={{
-          minWidth: { md: '500px', xs: '9.375rem' },
-          height: { md: '500px', xs: '9.375rem' },
+          minWidth: { md: '31.25rem', xs: '9.375rem' },
+          height: { md: '31.25rem', xs: '9.375rem' },
           borderRadius: '50%',
           overflow: 'hidden',
           position: { md: 'relative', xs: 'absolute' },
