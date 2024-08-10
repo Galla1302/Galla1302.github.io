@@ -44,7 +44,13 @@ export const NavBar = (props: NavBarProps) => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: mode === 'dark' ? '#343a40' : '#f8f9fa' }}
+      sx={{
+        backgroundColor: mode === 'dark' ? '#343a40' : '#f8f9fa',
+        position: 'sticky',
+        top: 0,
+        width: '100%',
+        zIndex: 10,
+      }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Box sx={{ marginLeft: 8, display: 'flex', alignItems: 'center' }}>

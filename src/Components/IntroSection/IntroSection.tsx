@@ -57,7 +57,6 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           borderRadius: '50%',
           overflow: 'hidden',
           position: 'relative',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
           marginRight: '20px',
         }}
       >
