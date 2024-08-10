@@ -51,7 +51,7 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           height: { md: '31.25rem', xs: '9.375rem' },
           borderRadius: '50%',
           overflow: 'hidden',
-          position: { md: 'relative', xs: 'absolute' },
+          position: { xs: 'absolute', md: 'relative' },
           marginRight: '1.25rem',
           top: { xs: '90px', md: '0' },
           right: { xs: 0 },
