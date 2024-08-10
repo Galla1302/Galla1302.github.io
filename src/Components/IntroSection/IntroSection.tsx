@@ -1,5 +1,5 @@
 import React, { Ref } from 'react';
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 import ProfileImage from '../../assets/profile_photo.png';
 import { GitHub, TextSnippet, LinkedIn } from '@mui/icons-material';
@@ -48,6 +48,7 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
       <Box
         sx={{
           minWidth: { md: '31.25rem', xs: '9.375rem' },
+          maxWidth: { xs: '9.375rem', md: '100%' },
           height: { md: '31.25rem', xs: '9.375rem' },
           borderRadius: '50%',
           overflow: 'hidden',
@@ -57,16 +58,14 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           right: { xs: 0 },
         }}
       >
-        <Avatar
+        <img
           src={ProfileImage}
           alt="Prasanth Galla"
-          sx={{
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'top center',
             width: '100%',
             height: '100%',
-            '& img': {
-              objectFit: 'cover',
-              objectPosition: 'top center',
-            },
           }}
         />
       </Box>
