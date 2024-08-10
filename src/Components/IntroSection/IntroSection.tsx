@@ -4,7 +4,7 @@ import { Avatar, Box, Button, Typography } from '@mui/material';
 import ProfileImage from '../../assets/profile_photo.png';
 import LightBgImage from '../../assets/white_bg.jpg';
 import DarkBgImage from '../../assets/dark_bg.jpg';
-import { GitHub, TextSnippet } from '@mui/icons-material';
+import { GitHub, TextSnippet, LinkedIn } from '@mui/icons-material';
 import styled from '@emotion/styled';
 import { useThemeContext } from '../../contexts/CustomThemeContext';
 
@@ -91,6 +91,19 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           field.
         </Typography>
         <Box sx={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+          <StyledButton
+            variant="contained"
+            color="primary"
+            startIcon={<LinkedIn />}
+            onClick={() =>
+              window.open(
+                'https://www.linkedin.com/in/galla-prasanth/',
+                '_blank',
+              )
+            }
+          >
+            Linkedln
+          </StyledButton>
           <StyledButton
             variant="contained"
             color="primary"

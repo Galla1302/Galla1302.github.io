@@ -8,6 +8,11 @@ import { ReactComponent as ReactIcon } from '../../assets/react.svg';
 import { ReactComponent as TypeScriptIcon } from '../../assets/typescript.svg';
 import { ReactComponent as PythonIcon } from '../../assets/python.svg';
 import { ReactComponent as RLanguageIcon } from '../../assets/r-language.svg';
+import { ReactComponent as BootstrapIcon } from '../../assets/bootstrap.svg';
+import { ReactComponent as DrupalIcon } from '../../assets/drupal.svg';
+import { ReactComponent as NodeJsIcon } from '../../assets/nodejs.svg';
+import { ReactComponent as MySqlLogo } from '../../assets/mysql.svg';
+import { ReactComponent as MongodbIcon } from '../../assets/mongodb.svg';
 
 type Props = {
   name: string;
@@ -38,6 +43,21 @@ export const Icon = ({ name }: Props) => {
 
     case 'R':
       return <RLanguageIcon width={64} height={64} />;
+
+    case 'Bootstrap':
+      return <BootstrapIcon width={64} height={64} />;
+
+    case 'Drupal':
+      return <DrupalIcon width={64} height={64} />;
+
+    case 'Node.js':
+      return <NodeJsIcon width={64} height={64} />;
+
+    case 'MySQL':
+      return <MySqlLogo width={64} height={64} />;
+
+    case 'Mongodb':
+      return <MongodbIcon width={64} height={64} />;
 
     default:
       return null;

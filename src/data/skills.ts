@@ -21,9 +21,27 @@ export const frontEnd = [
     name: 'CSS3',
   },
   {
+    name: 'Bootstrap',
+  },
+  {
     name: 'React',
   },
   {
     name: 'TypeScript',
+  },
+  {
+    name: 'Drupal',
+  },
+];
+
+export const backEndAndDb = [
+  {
+    name: 'Node.js',
+  },
+  {
+    name: 'MySQL',
+  },
+  {
+    name: 'Mongodb',
   },
 ];
