@@ -20,7 +20,7 @@ const StyledTitle = styled(Typography)(
 
 export const Skills = ({ skillsRef }: SkillsProps) => {
   return (
-    <Box ref={skillsRef} sx={{ minHeight: 'calc(100vh - 64px)' }}>
+    <Box ref={skillsRef} sx={{ minHeight: 'calc(100vh - 60.25rem)' }}>
       <StyledTitle variant="h2">Skills</StyledTitle>
       <Typography variant="h5" textAlign="center">
         Programming Languages
@@ -31,8 +31,8 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
           flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
-          gap: '16px',
-          margin: '16px 0',
+          gap: '1rem',
+          margin: '1rem 0',
         }}
       >
         {programmingLanguages.map((skill) => (
@@ -48,8 +48,8 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
           flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
-          gap: '16px',
-          margin: '16px 0',
+          gap: '1rem',
+          margin: '1rem 0',
         }}
       >
         {frontEnd.map((skill) => (
@@ -65,8 +65,8 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
           flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
-          gap: '16px',
-          margin: '16px 0',
+          gap: '1rem',
+          margin: '1rem 0',
         }}
       >
         {backEndAndDb.map((skill) => (

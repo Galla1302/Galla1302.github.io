@@ -145,7 +145,7 @@ export const NavBar = (props: NavBarProps) => {
                       padding: 1,
                       textDecoration: 'none',
                       textTransform: 'none',
-                      margin: '0 8px',
+                      margin: '0 0.5rem',
                     }}
                     onClick={el.onClick}
                   >

@@ -13,10 +13,10 @@ const StyledButton = styled(Button)(
   () => `
     background-color: #24292e;
     color: #fff;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     text-transform: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    box-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+    border-radius: 0.625rem;
     '&:hover': {
       background-color: #343a40;
     },
@@ -36,10 +36,10 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
       ref={introRef}
       sx={{
         display: 'flex',
-        minHeight: 'calc(100vh - 64px)',
+        minHeight: 'calc(100vh - 60.25rem)',
         padding: '32px',
         justifyContent: 'center',
-        gap: '16px',
+        gap: '1rem',
         alignItems: 'center',
         flexDirection: { md: 'row-reverse', xs: 'column-reverse' },
         transition: 'background-image 0.5s ease-in-out',
@@ -47,12 +47,12 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
     >
       <Box
         sx={{
-          minWidth: { md: '500px', xs: '150px' },
-          height: { md: '500px', xs: '150px' },
+          minWidth: { md: '500px', xs: '9.375rem' },
+          height: { md: '500px', xs: '9.375rem' },
           borderRadius: '50%',
           overflow: 'hidden',
           position: { md: 'relative', xs: 'absolute' },
-          marginRight: '20px',
+          marginRight: '1.25rem',
           top: { xs: '90px', md: '0' },
           right: { xs: 0 },
         }}
@@ -87,7 +87,7 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           set and aligning my career with cutting-edge advancements in the
           field.
         </Typography>
-        <Box sx={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+        <Box sx={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
           <StyledButton
             variant="contained"
             color="primary"
