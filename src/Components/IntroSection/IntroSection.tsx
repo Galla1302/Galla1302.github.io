@@ -41,18 +41,20 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
         justifyContent: 'center',
         gap: '16px',
         alignItems: 'center',
-        flexDirection: 'row-reverse',
+        flexDirection: { md: 'row-reverse', xs: 'column-reverse' },
         transition: 'background-image 0.5s ease-in-out',
       }}
     >
       <Box
         sx={{
-          minWidth: '500px',
-          height: '500px',
+          minWidth: { md: '500px', xs: '150px' },
+          height: { md: '500px', xs: '150px' },
           borderRadius: '50%',
           overflow: 'hidden',
-          position: 'relative',
+          position: { md: 'relative', xs: 'absolute' },
           marginRight: '20px',
+          top: { xs: '90px', md: '0' },
+          right: { xs: 0 },
         }}
       >
         <Avatar

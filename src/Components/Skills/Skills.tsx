@@ -28,7 +28,7 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
           gap: '16px',
@@ -45,7 +45,7 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
           gap: '16px',
@@ -62,7 +62,7 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexFlow: 'row wrap',
           alignContent: 'center',
           justifyContent: 'center',
           gap: '16px',

@@ -14,7 +14,8 @@ export const HomePage = () => {
       label: 'About',
       onClick: () => {
         window.scrollTo({
-          top: introRef?.current?.offsetTop,
+          top:
+            introRef?.current?.offsetTop && introRef?.current?.offsetTop - 50,
           behavior: 'smooth',
         });
       },
@@ -24,7 +25,8 @@ export const HomePage = () => {
       label: 'Skills',
       onClick: () => {
         window.scrollTo({
-          top: skillsRef?.current?.offsetTop,
+          top:
+            skillsRef?.current?.offsetTop && skillsRef?.current?.offsetTop - 50,
           behavior: 'smooth',
         });
       },
@@ -34,7 +36,7 @@ export const HomePage = () => {
       label: 'Work Experience',
       onClick: () => {
         window.scrollTo({
-          top: expRef?.current?.offsetTop,
+          top: expRef?.current?.offsetTop && expRef?.current?.offsetTop - 50,
           behavior: 'smooth',
         });
       },
