@@ -36,7 +36,7 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
       ref={introRef}
       sx={{
         display: 'flex',
-        minHeight: 'calc(100vh - 60.25rem)',
+        minHeight: 'calc(100vh - 4rem)',
         padding: '32px',
         justifyContent: 'center',
         gap: '1rem',

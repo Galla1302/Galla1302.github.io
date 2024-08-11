@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Box } from '@mui/material';
 
-import { IntroSection, NavBar, Skills } from '../../components';
+import { IntroSection, NavBar, Skills, Footer } from '../../components';
 
 export const HomePage = () => {
   const introRef = useRef<HTMLElement>(null);
@@ -49,6 +49,7 @@ export const HomePage = () => {
       <IntroSection introRef={introRef} />
       <Skills skillsRef={skillsRef} />
       {/* <WorkExperience expRef={expRef} /> */}
+      <Footer />
     </Box>
   );
 };
