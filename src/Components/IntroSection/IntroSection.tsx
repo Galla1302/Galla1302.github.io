@@ -1,6 +1,6 @@
 import { Ref, useState, useEffect } from 'react';
 import { Box, Button, Chip, Typography, useTheme } from '@mui/material';
-import { GitHub, TextSnippet, LinkedIn, OpenInNew } from '@mui/icons-material';
+import { TextSnippet, OpenInNew } from '@mui/icons-material';
 
 interface IntroSectionProps {
   introRef: Ref<HTMLElement>;
@@ -207,13 +207,9 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           <Button
             variant="contained"
             color="primary"
-            startIcon={<LinkedIn />}
-            onClick={() =>
-              window.open(
-                'https://www.linkedin.com/in/galla-prasanth/',
-                '_blank',
-              )
-            }
+            startIcon={<TextSnippet />}
+            endIcon={<OpenInNew sx={{ fontSize: '0.85rem !important' }} />}
+            onClick={onDownload}
             sx={{
               px: 3,
               py: 1.1,
@@ -221,27 +217,6 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
               boxShadow: '0 4px 14px rgba(99,102,241,0.35)',
               '&:hover': { boxShadow: '0 6px 20px rgba(99,102,241,0.5)' },
             }}
-          >
-            LinkedIn
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            startIcon={<GitHub />}
-            onClick={() =>
-              window.open('https://github.com/Galla1302', '_blank')
-            }
-            sx={{ px: 3, py: 1.1, fontWeight: 600 }}
-          >
-            GitHub
-          </Button>
-          <Button
-            variant="text"
-            color="primary"
-            startIcon={<TextSnippet />}
-            endIcon={<OpenInNew sx={{ fontSize: '0.85rem !important' }} />}
-            onClick={onDownload}
-            sx={{ px: 2, py: 1.1, fontWeight: 600 }}
           >
             Resume
           </Button>

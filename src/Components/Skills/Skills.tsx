@@ -14,6 +14,7 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
       ref={skillsRef}
       sx={{
         backgroundColor: theme.palette.background.default,
+        position: 'relative',
         py: { xs: 8, md: 12 },
         px: { xs: 3, md: 10 },
       }}
@@ -127,6 +128,25 @@ export const Skills = ({ skillsRef }: SkillsProps) => {
             </Box>
           </Box>
         ))}
+      </Box>
+
+      {/* Wave into Education (same default bg, subtle inverse wave) */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          lineHeight: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '50px' }}>
+          <path
+            d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"
+            fill={theme.palette.mode === 'light' ? '#f1f5f9' : '#0a1628'}
+          />
+        </svg>
       </Box>
     </Box>
   );

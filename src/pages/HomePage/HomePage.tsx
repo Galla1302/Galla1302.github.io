@@ -9,6 +9,7 @@ import {
   Footer,
   WorkExperience,
   Education,
+  Contact,
 } from '../../components';
 
 export const HomePage = () => {
@@ -102,6 +103,7 @@ export const HomePage = () => {
       <Skills skillsRef={skillsRef} />
       <Education educationRef={educationRef} />
       <WorkExperience expRef={expRef} />
+      <Contact />
       <Footer />
 
       {/* Scroll-to-top FAB */}

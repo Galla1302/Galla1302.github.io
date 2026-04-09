@@ -29,6 +29,7 @@ export const Education = ({ educationRef }: EducationProps) => {
       ref={educationRef}
       sx={{
         backgroundColor: theme.palette.background.default,
+        position: 'relative',
         py: { xs: 8, md: 10 },
         px: { xs: 3, md: 10 },
       }}
@@ -109,6 +110,25 @@ export const Education = ({ educationRef }: EducationProps) => {
             </Typography>
           </Box>
         ))}
+      </Box>
+
+      {/* Wave into WorkExperience */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          lineHeight: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '50px' }}>
+          <path
+            d="M0,0 C360,50 1080,0 1440,40 L1440,50 L0,50 Z"
+            fill={theme.palette.mode === 'light' ? '#f1f5f9' : '#0a1628'}
+          />
+        </svg>
       </Box>
     </Box>
   );

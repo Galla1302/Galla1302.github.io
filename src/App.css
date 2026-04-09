@@ -15,3 +15,60 @@ body {
 .App {
   min-height: 100vh;
 }
+
+@media print {
+  /* Hide interactive / decorative elements */
+  header,
+  footer,
+  nav,
+  .MuiFab-root,
+  button {
+    display: none !important;
+  }
+
+  /* Reset backgrounds to white for ink saving */
+  body,
+  .App,
+  section,
+  [class*="MuiBox-root"],
+  [class*="MuiCard-root"],
+  [class*="MuiPaper-root"] {
+    background: #fff !important;
+    box-shadow: none !important;
+    color: #000 !important;
+  }
+
+  /* Remove gradients from text */
+  * {
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+  }
+
+  /* Ensure sections don't break mid-content */
+  section,
+  [class*="MuiCard-root"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Restore readable font sizes */
+  body {
+    font-size: 11pt;
+  }
+
+  h1 { font-size: 20pt; }
+  h2 { font-size: 16pt; }
+  h5, h6 { font-size: 12pt; }
+
+  /* Show full URL for links */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #555;
+  }
+
+  /* Chip borders visible in print */
+  [class*="MuiChip-root"] {
+    border: 1px solid #999 !important;
+  }
+}
