@@ -8,7 +8,6 @@ interface SkillsProps {
 
 export const Skills = ({ skillsRef }: SkillsProps) => {
   const theme = useTheme();
-
   return (
     <Box
       ref={skillsRef}

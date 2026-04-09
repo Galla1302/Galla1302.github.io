@@ -17,6 +17,7 @@ export const HomePage = () => {
   const skillsRef = useRef<HTMLElement>(null);
   const educationRef = useRef<HTMLElement>(null);
   const expRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState<number>(1);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const theme = useTheme();
@@ -29,6 +30,7 @@ export const HomePage = () => {
       { ref: skillsRef, id: 2 },
       { ref: educationRef, id: 3 },
       { ref: expRef, id: 4 },
+      { ref: contactRef, id: 5 },
     ];
 
     sections.forEach(({ ref, id }) => {
@@ -94,6 +96,16 @@ export const HomePage = () => {
         });
       },
     },
+    {
+      id: 5,
+      label: 'Contact',
+      onClick: () => {
+        window.scrollTo({
+          top: contactRef?.current?.offsetTop && contactRef?.current?.offsetTop - 50,
+          behavior: 'smooth',
+        });
+      },
+    },
   ];
 
   return (
@@ -103,7 +115,7 @@ export const HomePage = () => {
       <Skills skillsRef={skillsRef} />
       <Education educationRef={educationRef} />
       <WorkExperience expRef={expRef} />
-      <Contact />
+      <Contact contactRef={contactRef} />
       <Footer />
 
       {/* Scroll-to-top FAB */}
