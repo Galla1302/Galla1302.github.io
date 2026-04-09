@@ -1,23 +1,23 @@
-import { Box, Typography } from '@mui/material';
-import React from 'react';
-import { useThemeContext } from '../../contexts/CustomThemeContext';
+import { Box, Typography, useTheme } from '@mui/material';
 
 export const Footer = () => {
-  const { mode } = useThemeContext();
+  const theme = useTheme();
   return (
-    <footer>
-      <Box
-        sx={{
-          backgroundColor: mode === 'dark' ? '#343a40' : '#f8f9fa',
-          minHeight: '4rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-        }}
-      >
-        <Typography>© 2024 Prasanth Galla</Typography>
-      </Box>
-    </footer>
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        borderTop: `1px solid ${theme.palette.divider}`,
+        minHeight: '4rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        px: 3,
+      }}
+    >
+      <Typography variant="body2" color="text.secondary">
+        © 2025 Prasanth Galla. Built with React & MUI.
+      </Typography>
+    </Box>
   );
 };

@@ -7,10 +7,9 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Switch,
   Toolbar,
   Typography,
-  styled,
+  useTheme,
 } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -25,31 +24,9 @@ interface NavBarProps {
   }[];
 }
 
-const LogoTitle = styled('h5')(
-  ({ theme }) => `
-    color: ${theme.palette.text.primary};
-    display: inline-block;
-`,
-);
-
-const StyledUl = styled('ul')(
-  () => `
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    margin-right: 64px;
-`,
-);
-
-const StyledLi = styled('li')(
-  () => `
-    float: left;
-`,
-);
-
 export const NavBar = (props: NavBarProps) => {
   const { links } = props;
+  const theme = useTheme();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null,
@@ -67,94 +44,126 @@ export const NavBar = (props: NavBarProps) => {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
-        backgroundColor: mode === 'dark' ? '#343a40' : '#f8f9fa',
-        position: 'sticky',
         top: 0,
         width: '100%',
         zIndex: 10,
+        color: theme.palette.text.primary,
       }}
     >
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Box
+      <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 6 } }}>
+        {/* Logo */}
+        <Typography
+          variant="h6"
           sx={{
-            marginLeft: { xs: 0, md: 8 },
-            display: 'flex',
-            alignItems: 'center',
+            fontWeight: 800,
+            background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            letterSpacing: '-0.5px',
           }}
         >
-          <LogoTitle sx={{ display: { xs: 'none', md: 'block' } }}>
-            Prasanth Galla
-          </LogoTitle>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+          PG
+        </Typography>
+
+        {/* Desktop nav */}
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+            alignItems: 'center',
+            gap: 0.5,
+          }}
+        >
+          {links.map((el) => (
+            <Button
+              key={`nav-${el.id}`}
+              onClick={el.onClick}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                color: theme.palette.text.secondary,
+                fontWeight: 500,
+                fontSize: '0.9rem',
+                px: 1.5,
+                '&:hover': {
+                  color: theme.palette.primary.main,
+                  backgroundColor: 'transparent',
+                },
               }}
             >
-              {links.map((link) => (
-                <MenuItem
-                  key={link.id}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    link.onClick();
-                  }}
-                >
-                  <Typography textAlign="center">{link.label}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Switch
-            checked={mode === 'dark'}
-            onChange={toggleTheme}
-            color="default"
-          />
-          {mode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
+              {el.label}
+            </Button>
+          ))}
+          <IconButton
+            onClick={toggleTheme}
+            size="small"
+            sx={{
+              ml: 1,
+              color: theme.palette.text.secondary,
+              border: `1px solid ${theme.palette.divider}`,
+              borderRadius: '8px',
+              p: '6px',
+              '&:hover': { color: theme.palette.primary.main },
+            }}
+          >
+            {mode === 'dark' ? (
+              <Brightness7Icon fontSize="small" />
+            ) : (
+              <Brightness4Icon fontSize="small" />
+            )}
+          </IconButton>
         </Box>
-        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <nav>
-            <StyledUl>
-              {links.map((el) => (
-                <StyledLi key={`navigation-link-${el.id}`}>
-                  <Button
-                    sx={{
-                      color: 'text.primary',
-                      display: 'block',
-                      padding: 1,
-                      textDecoration: 'none',
-                      textTransform: 'none',
-                      margin: '0 0.5rem',
-                    }}
-                    onClick={el.onClick}
-                  >
-                    {el.label}
-                  </Button>
-                </StyledLi>
-              ))}
-            </StyledUl>
-          </nav>
+
+        {/* Mobile: hamburger + theme toggle */}
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
+          <IconButton
+            onClick={toggleTheme}
+            size="small"
+            sx={{ color: theme.palette.text.secondary }}
+          >
+            {mode === 'dark' ? (
+              <Brightness7Icon fontSize="small" />
+            ) : (
+              <Brightness4Icon fontSize="small" />
+            )}
+          </IconButton>
+          <IconButton
+            size="large"
+            onClick={handleOpenNavMenu}
+            sx={{ color: theme.palette.text.primary }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            PaperProps={{
+              sx: {
+                mt: 1,
+                borderRadius: '10px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                minWidth: 160,
+              },
+            }}
+          >
+            {links.map((link) => (
+              <MenuItem
+                key={link.id}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  link.onClick();
+                }}
+                sx={{ py: 1.2 }}
+              >
+                <Typography fontWeight={500}>{link.label}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
         </Box>
       </Toolbar>
     </AppBar>

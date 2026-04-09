@@ -6,13 +6,13 @@ import {
   NavBar,
   Skills,
   Footer,
-  // WorkExperience,
+  WorkExperience,
 } from '../../components';
 
 export const HomePage = () => {
   const introRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
-  // const expRef = useRef<HTMLElement>(null);
+  const expRef = useRef<HTMLElement>(null);
 
   const navigationData = [
     {
@@ -37,16 +37,16 @@ export const HomePage = () => {
         });
       },
     },
-    // {
-    //   id: 3,
-    //   label: 'Work Experience',
-    //   onClick: () => {
-    //     window.scrollTo({
-    //       top: expRef?.current?.offsetTop && expRef?.current?.offsetTop - 50,
-    //       behavior: 'smooth',
-    //     });
-    //   },
-    // },
+    {
+      id: 3,
+      label: 'Work Experience',
+      onClick: () => {
+        window.scrollTo({
+          top: expRef?.current?.offsetTop && expRef?.current?.offsetTop - 50,
+          behavior: 'smooth',
+        });
+      },
+    },
   ];
 
   return (
@@ -54,7 +54,7 @@ export const HomePage = () => {
       <NavBar links={navigationData} />
       <IntroSection introRef={introRef} />
       <Skills skillsRef={skillsRef} />
-      {/* <WorkExperience expRef={expRef} /> */}
+      <WorkExperience expRef={expRef} />
       <Footer />
     </Box>
   );
