@@ -22,10 +22,11 @@ interface NavBarProps {
     label: string;
     onClick: () => void;
   }[];
+  activeSection: number;
 }
 
 export const NavBar = (props: NavBarProps) => {
-  const { links } = props;
+  const { links, activeSection } = props;
   const theme = useTheme();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -81,10 +82,25 @@ export const NavBar = (props: NavBarProps) => {
               key={`nav-${el.id}`}
               onClick={el.onClick}
               sx={{
-                color: theme.palette.text.secondary,
-                fontWeight: 500,
+                color: activeSection === el.id
+                  ? theme.palette.primary.main
+                  : theme.palette.text.secondary,
+                fontWeight: activeSection === el.id ? 600 : 500,
                 fontSize: '0.9rem',
                 px: 1.5,
+                position: 'relative',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: 4,
+                  left: '50%',
+                  transform: activeSection === el.id ? 'translateX(-50%) scaleX(1)' : 'translateX(-50%) scaleX(0)',
+                  width: '60%',
+                  height: '2px',
+                  borderRadius: '1px',
+                  backgroundColor: theme.palette.primary.main,
+                  transition: 'transform 0.2s ease',
+                },
                 '&:hover': {
                   color: theme.palette.primary.main,
                   backgroundColor: 'transparent',

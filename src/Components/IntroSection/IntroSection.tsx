@@ -198,6 +198,37 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
           </Button>
         </Box>
       </Box>
+
+      {/* Scroll-down hint */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 32,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 0.5,
+          opacity: 0.45,
+          '@keyframes bounce': {
+            '0%, 100%': { transform: 'translateX(-50%) translateY(0)' },
+            '50%': { transform: 'translateX(-50%) translateY(6px)' },
+          },
+          animation: 'bounce 1.8s ease-in-out infinite',
+        }}
+      >
+        <Typography variant="caption" sx={{ letterSpacing: '0.08em', fontSize: '0.7rem' }}>
+          scroll
+        </Typography>
+        <Box
+          sx={{
+            width: '1px',
+            height: '36px',
+            background: `linear-gradient(180deg, ${theme.palette.text.primary}, transparent)`,
+          }}
+        />
+      </Box>
     </Box>
   );
 };

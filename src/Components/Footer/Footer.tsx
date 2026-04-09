@@ -16,7 +16,7 @@ export const Footer = () => {
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        © 2025 Prasanth Galla. Built with React & MUI.
+        © 2026 Prasanth Galla. Built with React & MUI.
       </Typography>
     </Box>
   );

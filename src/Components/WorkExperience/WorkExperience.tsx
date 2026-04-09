@@ -1,9 +1,10 @@
 import React, { Ref, useState } from 'react';
-import { Box, Typography, Card, CardContent, Chip, Modal, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, Chip, Modal, IconButton, useTheme } from '@mui/material';
 import { projects } from '../../data/projects';
 import { ProjectItem } from './ProjectItem';
 import BusinessIcon from '@mui/icons-material/Business';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface WorkExperienceProps {
   expRef: Ref<HTMLElement>;
@@ -85,14 +86,27 @@ export const WorkExperience = ({ expRef }: WorkExperienceProps) => {
             >
               <CardContent sx={{ flexGrow: 1, p: 3 }}>
                 {/* Company row */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
                   <BusinessIcon sx={{ fontSize: '1rem', color: accent }} />
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 700, color: accent }}
-                  >
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: accent }}>
                     {project.company}
                   </Typography>
+                  {project.endDate === 'Present' && (
+                    <Chip
+                      label="Current"
+                      size="small"
+                      sx={{
+                        height: '20px',
+                        fontSize: '0.65rem',
+                        fontWeight: 700,
+                        backgroundColor: 'rgba(34,197,94,0.12)',
+                        color: '#16a34a',
+                        border: '1px solid rgba(34,197,94,0.3)',
+                        borderRadius: '4px',
+                        ml: 'auto',
+                      }}
+                    />
+                  )}
                 </Box>
 
                 {/* Position */}
@@ -195,6 +209,22 @@ export const WorkExperience = ({ expRef }: WorkExperienceProps) => {
             overflowY: 'auto',
           }}
         >
+          <IconButton
+            onClick={() => setSelectedProject(null)}
+            size="small"
+            sx={{
+              position: 'sticky',
+              top: 8,
+              float: 'right',
+              mr: 1,
+              mt: 1,
+              zIndex: 1,
+              color: theme.palette.text.secondary,
+              '&:hover': { color: theme.palette.text.primary },
+            }}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
           {selectedProject && <ProjectItem {...selectedProject} />}
         </Box>
       </Modal>
