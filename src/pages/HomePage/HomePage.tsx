@@ -8,11 +8,13 @@ import {
   Skills,
   Footer,
   WorkExperience,
+  Education,
 } from '../../components';
 
 export const HomePage = () => {
   const introRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
+  const educationRef = useRef<HTMLElement>(null);
   const expRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState<number>(1);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -24,7 +26,8 @@ export const HomePage = () => {
     const sections = [
       { ref: introRef, id: 1 },
       { ref: skillsRef, id: 2 },
-      { ref: expRef, id: 3 },
+      { ref: educationRef, id: 3 },
+      { ref: expRef, id: 4 },
     ];
 
     sections.forEach(({ ref, id }) => {
@@ -72,6 +75,16 @@ export const HomePage = () => {
     },
     {
       id: 3,
+      label: 'Education',
+      onClick: () => {
+        window.scrollTo({
+          top: educationRef?.current?.offsetTop && educationRef?.current?.offsetTop - 50,
+          behavior: 'smooth',
+        });
+      },
+    },
+    {
+      id: 4,
       label: 'Work Experience',
       onClick: () => {
         window.scrollTo({
@@ -87,6 +100,7 @@ export const HomePage = () => {
       <NavBar links={navigationData} activeSection={activeSection} />
       <IntroSection introRef={introRef} />
       <Skills skillsRef={skillsRef} />
+      <Education educationRef={educationRef} />
       <WorkExperience expRef={expRef} />
       <Footer />
 

@@ -1,4 +1,4 @@
-import { Ref } from 'react';
+import { Ref, useState, useEffect } from 'react';
 import { Box, Button, Chip, Typography, useTheme } from '@mui/material';
 import { GitHub, TextSnippet, LinkedIn, OpenInNew } from '@mui/icons-material';
 
@@ -6,8 +6,36 @@ interface IntroSectionProps {
   introRef: Ref<HTMLElement>;
 }
 
+const ROLES = [
+  'Full Stack Developer',
+  'React Engineer',
+  'Node.js Developer',
+  'Cloud & DevOps Enthusiast',
+];
+
 export const IntroSection = ({ introRef }: IntroSectionProps) => {
   const theme = useTheme();
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = ROLES[roleIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && displayed.length < current.length) {
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
+    } else if (!deleting && displayed.length === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, roleIndex]);
 
   const onDownload = () => {
     const link = document.createElement('a');
@@ -67,19 +95,40 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
       }}
     >
       <Box sx={{ maxWidth: '720px', width: '100%', zIndex: 1 }}>
-        {/* Eyebrow */}
-        <Typography
-          variant="body2"
+        {/* Typing animation */}
+        <Box
           sx={{
-            color: theme.palette.primary.main,
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5,
             mb: 2,
+            minHeight: '1.5rem',
           }}
         >
-          Full Stack Developer
-        </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: theme.palette.primary.main,
+              fontWeight: 600,
+              letterSpacing: '0.05em',
+              fontFamily: 'monospace',
+            }}
+          >
+            {displayed}
+          </Typography>
+          <Box
+            sx={{
+              width: '2px',
+              height: '1.1em',
+              backgroundColor: theme.palette.primary.main,
+              '@keyframes blink': {
+                '0%, 100%': { opacity: 1 },
+                '50%': { opacity: 0 },
+              },
+              animation: 'blink 1s step-end infinite',
+            }}
+          />
+        </Box>
 
         {/* Heading */}
         <Typography
@@ -228,6 +277,29 @@ export const IntroSection = ({ introRef }: IntroSectionProps) => {
             background: `linear-gradient(180deg, ${theme.palette.text.primary}, transparent)`,
           }}
         />
+      </Box>
+
+      {/* Wave divider — fills into Skills section background */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          lineHeight: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <svg
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          style={{ display: 'block', width: '100%', height: '60px' }}
+        >
+          <path
+            d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
+            fill={theme.palette.mode === 'light' ? '#f8fafc' : '#0f172a'}
+          />
+        </svg>
       </Box>
     </Box>
   );
