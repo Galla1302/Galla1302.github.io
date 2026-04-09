@@ -35,7 +35,7 @@ export const Contact = () => {
           mb: 1,
         }}
       >
-        Let's connect
+        Let&apos;s connect
       </Typography>
       <Typography variant="h2" sx={{ letterSpacing: '-0.5px', mb: 2 }}>
         Get in Touch
